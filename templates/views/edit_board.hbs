@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Edit Details</title>
+        <link rel="icon" href="static/images/icons/edit.png"/>
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!--FONT AWESOME KID CODE-->
+        <script src="https://kit.fontawesome.com/f997339679.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- Top content -->
+        <div class="top-content">
+            <div class="inner-bg">
+                <div class="container">
+                	
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>GEEKU</strong> Edit Account Details</h1>                            
+                        </div>
+                    </div>
+                        <div class="col-sm-6 col-sm-offset-3 text">                        	
+                        	<div class="form-box">
+	                        	<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>Change Board</h3>
+	                            		<p>Enter the old board and the new board. Please enter all the below information in <b>Capital Letters</b></p>
+                                        {{#if message}}
+                                            <br><br>
+                                            <h4 style="text-align: center; background-color: #ff726f; border-radius: 5px;">{{ message }} </h4>
+                                        {{/if}}
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fas fa-graduatino-cap"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" action="" method="post" class="login-form">
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-username">Old Board: </label>
+				                        	<input type="text" name="old" placeholder="Old Board" class="form-username form-control" id="form-username">
+                                        </div>	
+                                        <div class="form-group">
+				                    		<label class="sr-only" for="form-username">New Board: </label>
+				                        	<input type="text" name="new" placeholder="New Board" class="form-username form-control" id="form-username">
+				                        </div>			                        
+                                          <style>
+                                            #submit-changes, button{
+                                                color: white;
+                                                background-color: #337ab7;
+                                                border-radius: 15px;
+                                                height: 45px;
+                                                width: 138px;
+                                            }
+                                            #submit-changes:hover{
+                                                background: #333333;
+                                            }
+                                            button:hover{
+                                                background: #333333;
+                                            }
+                                        </style> 
+                                            <a href="/"><button style="float: left;">Back Home</button></a>
+                                            <button id="submit-changes" style="float: right;">Submit Changes</button>
+				                    </form>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>        
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>        
+    </body>
+</html>

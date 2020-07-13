@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Geeku</title>
+		<link rel="icon" type="img/png" href="static/images/logo.png">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="static/css/main.css" />
+	
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				
+				<div class="inner">
+					<h4 style="float: left; color: white;">{{name}}|{{board}}|{{grade}}</h4>
+					<nav id="nav">
+						
+						<a style="font-size: 20px;" href="/">Home</a>
+						<a style="font-size: 20px;" href="/logout">Logout</a>
+						<a style="font-size: 20px;" href="/profile">Profile</a>
+
+					</nav>
+					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+				</div>
+			</header>
+<style>
+	#banner_text {
+		color: white;
+	}
+</style>
+		<!-- Banner -->
+			<section id="banner">
+				<h1>Welcome to Geeku, {{name}}</h1>
+				<p id="banner_text">The perfect online platform where you can chat and learn with friends!</p>
+				<a href="http://localhost:5000"><button> Join Discussions!</button></a>
+				<a href="/resources/syllabus#{{board}}{{grade}}"><button > Explore My Syllabus!</button></a>
+				<a href="/resources/exams#{{board}}{{grade}}"><button> Learn More About My Exams!</button></a>
+				<a href="#"><button> Ask Specific Doubts!</button></a>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="wrapper">
+				<div class="inner">
+					<div class="flex flex-3">
+						<article>
+							<header>
+								<h3>What is Geeku all about?<br /></h3>
+							</header>
+							<p>Geeky is an online platform where students can register themselves and join customised forums with students from the same board, to clarify doubts and share resources.  </p>
+							<footer>
+								<a href="about.html" class="button special">More</a>
+							</footer>
+						</article>
+						<article>
+							<header>
+								<h3>What boards will Geeku be helpful for?<br /></h3>
+							</header>
+							<p>Chatversity can be used by and can be helpful for students of any board. From authentic and old boards as CBSE, to boards as new as IB and MYP.</p>
+							<footer>
+								<a href="about.html" class="button special">More</a>
+							</footer>
+						</article>
+						<article>
+							<header>
+								<h3>What can you do with Geeku?<br /></h3>
+							</header>
+							<p>Students can share files, resources, or clarify doubts of classmates on the online forums. They can host revision sessions before exams and can be better prepared for class tasks and exams.</p>
+							<footer>
+								<a href="about.html" class="button special">More</a>
+							</footer>
+						</article>
+					</div>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style1 special">
+				<div class="inner">
+					<header>
+						<h2>Help Desk</h2>
+						<p>If you need help or have any queries, contact our help desk members</p>
+					</header>
+					<div class="flex flex-4">
+						<div class="box person">
+							<div class="image round">
+								<img src="" alt="Person 1" />
+							</div>
+							<h3>NAME</h3>
+							<p>EMAIL</p>
+						</div>
+						<div class="box person">
+							<div class="image round">
+								<img src="" alt="Person 2" />
+							</div>
+							<h3>NAME</h3>
+							<p>EMAIL</p>
+						</div>
+						<div class="box person">
+							<div class="image round">
+								<img src="" alt="Person 3" />
+							</div>
+							<h3>NAME</h3>
+							<p>EMAIL</p>
+						</div>
+						<div class="box person">
+							<div class="image round">
+								<img src="" alt="Person 4" />
+							</div>
+							<h3>NAME</h3>
+							<p>EMAIL</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!--THREE-->
+			<section id="three" class="wrapper special">
+				<div class="inner">
+					<header class="align-center">
+						<h2>Extra Resources</h2>
+						<p>For extra resources, subscribe now. We offer --> </p>
+					</header>
+					<div class="flex flex-2">
+						<article>
+							<div class="image fit">
+								<img src="../static/images/books.jpg" alt="Pic 01" />
+							</div>
+							<header>
+								<h3 style="text-align: center;">Textbooks for all grades and boards</h3>
+							</header>
+						</article>
+						<article>
+							<div class="image fit">
+								<img src="../static/images/exams.jpg" alt="Pic 02" />
+							</div>
+							<header>
+								<h3 style="text-align: center;">Past Papers and Answer Schemes for all grades and boards</h3>
+							</header>
+						</article>
+						<br><br>
+						<a href="/subscribe"><button class="button special" style="margin-left: 450px;">Click Here To Subscribe!</button></a>
+					</div>
+				</div>
+			</section>
+
+		
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="flex">
+						<div class="copyright">
+							&copy; Geeku.org
+						</div>
+						<ul class="icons">
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
+							<li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
+							<li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="static//js/jquery.min.js"></script>
+			<script src="static//js/skel.min.js"></script>
+			<script src="static//js/util.js"></script>
+			<script src="static//js/main.js"></script>
+
+	</body>
+</html>

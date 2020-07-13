@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Geeku</title>
+    <link rel="icon" href="static/images/icons/signup.png"/>
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="static/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="static/css/register.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" action="/register" id="signup-form" class="signup-form">
+                        <h2 class="form-title">{{name}} Account Details</h2>
+                        <div class="form-group">
+                            <style>
+                                #link{
+                                    margin-left: 145px;
+                                    text-decoration: none;
+                                    color: black;
+                                    border: 10px;
+                                    width: 15px;
+                                }
+                                #link:hover{
+                                    font-weight: bold;
+                                }
+                            </style>
+                            <table style="max-width: 100%;">
+                                <tr>
+                                    <td style="width: 25%;"><b>Username</b></td>
+                                    <td style="width: 50%; text-align: center;">{{name}}</td>
+                                    <td style="width: 25%; text-align: center;"><a href="/edit-username" id="link">Change</a></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Email</b></td>
+                                    <td style="width: 50%; text-align: center;">{{email}}</td>
+                                    <td><a href="/edit-email" id="link">Change</a></td>
+                                </tr>
+                                 <tr>
+                                    <td><b>School</b></td>
+                                    <td style="width: 50%; text-align: center;">{{school}}</td>
+                                    <td><a href="/edit-school" id="link">Change</a></td>
+                                </tr>
+                                 <tr>
+                                    <td><b>Board</b></td>
+                                    <td style="width: 50%; text-align: center;">{{board}}</td>
+                                    <td><a href="/edit-board" id="link">Change</a></td>
+                                </tr>
+                                 <tr>
+                                    <td><b>Grade</b></td>
+                                    <td style="width: 50%; text-align: center;">{{grade}}</td>
+                                    <td><a href="/edit-grade" id="link">Change</a></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="form-group">    
+                          <style>
+                              #edit{
+                                width: 100%;
+                                text-align: center;
+                                -moz-border-radius: 5px;
+                                -webkit-border-radius: 5px;
+                                -o-border-radius: 5px;
+                                -ms-border-radius: 5px;
+                                padding: 17px 20px;
+                                box-sizing: border-box;
+                                font-size: 14px;
+                                font-weight: 700;
+                                color: #fff;
+                                text-transform: uppercase;
+                                border: none;
+                                background-image: -moz-linear-gradient(to left, #74ebd5, #9face6);
+                                background-image: -ms-linear-gradient(to left, #74ebd5, #9face6);
+                                background-image: -o-linear-gradient(to left, #74ebd5, #9face6);
+                                background-image: -webkit-linear-gradient(to left, #74ebd5, #9face6);
+                                background-image: linear-gradient(to left, #74ebd5, #9face6);
+                                border-radius: 25px;  
+                              }
+                              #edit:hover{
+                                background: #333333;;
+                                }
+                          </style>
+                          <p class="loginhere">If you have to change your password 
+                              <a href="/change-password" class="loginhere-link">Click Here</a>
+                          </p>
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        Go back home <a href="/" class="loginhere-link">Click Here!</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/js/register.js"></script>
+</body>
+</html>
