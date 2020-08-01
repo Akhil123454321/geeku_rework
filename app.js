@@ -1,3 +1,5 @@
+//////////////////////////////////////////PREREQUISITE SETTINGS AND CONFIGURATIONS///////////////////////////////
+
 //importing packages/node modules
 var express = require('express');
 var path = require('path')
@@ -20,7 +22,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-//app uses
+//app uses and settings
 var urlencodedParser = bodyparser.urlencoded({ extended: false })
 app.set('views', path.join(__dirname + '/templates/views/'))
 app.use(express.static(__dirname + '/templates/'))
@@ -45,8 +47,6 @@ var options = {
 
 var sessionStore = new mysqlstore(options);
 
-
-
 //DB connection settings
 var connection = mysql.createConnection({
     host     : 'localhost',
@@ -65,6 +65,7 @@ var connection = mysql.createConnection({
           console.log('Accounts DB connection was successful');
       }
   });
+
 ////////////////////////////////////////////////////////////////PAGE ROUTES//////////////////////////////////////////////
 
 
@@ -187,7 +188,7 @@ app.get('/logout', (request, response)=>{
     }
 })
 
-////////////////////////////////////////////////////////////////*ACCOUNTS PAGE*/
+////////////////////////////////////////////////////////////////*PROFILE PAGE*/
 app.get('/profile', function(request, response){
     let user = request.session.user
 
