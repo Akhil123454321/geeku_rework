@@ -13,7 +13,7 @@ var passport = require('passport');
 var User = require('./templates/core/users');
 const http = require('http')
 var socketio = require('socket.io');
-
+//express socket.io sessions 
 
 const user = new User()
 
@@ -147,7 +147,7 @@ app.post('/login', urlencodedParser, async(request,response) => {
         if(error) { throw error; }
         else if (results.length > 0){
             console.log(results)
-            if( bcrypt.compare(request.body.pass, results[0].Password)){
+            if(bcrypt.compare(request.body.pass, results[0].Password)){
                 console.log('User exists and password matches!')
                 connection.query("SELECT ID, Name, School, Board, Grade FROM geeku WHERE Email = '"+request.body.email+"'", function(error, results){
                     if(error){throw error}
@@ -163,7 +163,6 @@ app.post('/login', urlencodedParser, async(request,response) => {
                         response.redirect('/')
                     }
                 })
-
             }
             else {
                 return response.render(__dirname + '/templates/views/login.hbs', {message: "Password Incorrect" })
@@ -177,7 +176,16 @@ app.post('/login', urlencodedParser, async(request,response) => {
 })
 
 ///////////////////////////////////////////////////////////////////*FORUMS PAGE*/
+app.get('/forums', (request, response)=>{
+    let user = request.session.user
 
+    if(user){
+        response.sendFile(__dirname + '/forums/public/views/index.html')
+    }
+    else{
+        response.redirect('/')
+    }
+})
 
 ////////////////////////////////////////////////////////////////////*LOGOUT*/
 app.get('/logout', (request, response)=>{

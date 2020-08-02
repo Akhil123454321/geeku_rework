@@ -1,0 +1,38 @@
+{
+  "name": "geeku",
+  "version": "1.0.0",
+  "description": "You can use the [editor on GitHub](https://github.com/Akhil123454321/geeku/edit/master/README.md) to maintain and preview the content for your website in Markdown files.",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.3",
+    "express-mysql-session": "^2.1.4",
+    "express": "^4.17.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.0",
+    "hbs": "^4.1.1",
+    "moment": "^2.27.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akhil123454321/geeku.git"
+  },
+  "author": "AKhil Sagaran Kasturi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Akhil123454321/geeku/issues"
+  },
+  "homepage": "https://github.com/Akhil123454321/geeku#readme"
+}
