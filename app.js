@@ -1,7 +1,7 @@
 //////////////////////////////////////////PREREQUISITE SETTINGS AND CONFIGURATIONS///////////////////////////////
 
 //importing packages/node modules
-var express = require('express');
+var express = require('express')
 var path = require('path')
 var bodyparser = require('body-parser');
 var bcrypt = require('bcrypt');
@@ -11,22 +11,21 @@ var mysqlstore = require('express-mysql-session');
 var cookie = require('cookie-parser');
 var passport = require('passport');
 var User = require('./templates/core/users');
-const http = require('http')
-var socketio = require('socket.io');
+const { request } = require('express');
 //express socket.io sessions 
+
+//starting the app
+var app = express();
+
 
 const user = new User()
 
-//starting the app and setting up socket
-const app = express();
-const server = http.createServer(app);
-const io = socketio(server);
 
 //app uses and settings
 var urlencodedParser = bodyparser.urlencoded({ extended: false })
-app.set('views', path.join(__dirname + '/templates/views/'))
 app.use(express.static(__dirname + '/templates/'))
-app.set('view-engine', 'hbs')
+app.set('views', path.join(__dirname + '/templates/views/'))
+app.set('view engine', 'hbs')
 app.use(cookie())
 app.use(session({
     secret: 'secret-key',
@@ -433,12 +432,6 @@ app.post('/change-password', urlencodedParser, function(request, response){
     })
 })
 
-//////////////////////////////////////////*FORUMS TRIAL*/
-app.use(express.static(path.join(__dirname, '/chat/public')))
-app.get('/forums', function(request, response){
-    const botName = 'Geeku Bot'
-
-})
 ////////////////////////////////////////////////////////////////////////*RESOURCE PAGES*/
 //syllabus PAGE
 app.get('/resources/syllabus', function(request, response){
@@ -477,6 +470,12 @@ app.use((err, request, response, next) => {
     response.render(__dirname + '/templates/views/error.hbs')
 })
 
-app.listen(3000, ()=>{
-    console.log("APP IS LISTENING ON PORT 3000")
-})
+
+//listening to the port
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`App running on port ${PORT}`));
+
+
+
+
+
