@@ -1,4 +1,4 @@
-//////////////////////////////////////////PREREQUISITE SETTINGS AND CONFIGURATIONS///////////////////////////////
+/////////////////////////////////PREREQUISITE SETTINGS AND CONFIGURATIONS///////////////////////////////
 
 //importing packages/node modules
 var express = require('express')
@@ -17,15 +17,22 @@ const { request } = require('express');
 //starting the app
 var app = express();
 
-
+//creating a new object to use the login function created outisde in core
 const user = new User()
 
 
 //app uses and settings
+//body-parser setting
 var urlencodedParser = bodyparser.urlencoded({ extended: false })
+
+//static directory
 app.use(express.static(__dirname + '/templates/'))
+
+//setting up the view engine
 app.set('views', path.join(__dirname + '/templates/views/'))
 app.set('view engine', 'hbs')
+
+//setting up the sessions
 app.use(cookie())
 app.use(session({
     secret: 'secret-key',
@@ -34,6 +41,8 @@ app.use(session({
     saveUninitialized: false,
     cookie: {maxAge: 60 * 1000 * 30}
 }))
+
+//setting up passport for some reason i dont know why
 app.use(passport.initialize())
 app.use(passport.session())
 var options = {
@@ -65,7 +74,7 @@ var connection = mysql.createConnection({
       }
   });
 
-////////////////////////////////////////////////////////////////PAGE ROUTES//////////////////////////////////////////////
+///////////////////////////////////////////////////////PAGE ROUTES//////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////*HOME PAGE*/
@@ -81,12 +90,13 @@ app.get('/', function(request, response) {
 
 })
 
-//////////////////////////////////////////////////////////////*REGISTER PAGE*/
+//////////////////////////////////////////////////////////////*REGISTER PAGE*////
 app.get('/register', function(request, response){
     response.render(__dirname + '/templates/views/register.hbs')
 })
 app.post('/register', urlencodedParser, (request,response) => {
     console.log(request.body)
+    
     connection.query("SELECT * FROM geeku WHERE Email = '"+request.body.email+ "'", async function(error, results){
         if (error) { throw error;}
         else if (results.length > 0) {
@@ -471,9 +481,11 @@ app.use((err, request, response, next) => {
 })
 
 
-//listening to the port
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`App running on port ${PORT}`));
+///////////////////////////////////////////////////////APP IS LISTENING
+const PORT = process.env.PORT || 3000
+app.listen(PORT, ()=>{
+    console.log("App is listening on port '"+PORT+ "'")
+})
 
 
 

@@ -1,26 +1,38 @@
-const express   = require('express')
-const mysql     = require('mysql')
-const path      = require('path')
-const bodyparser= require('body-parser')
-const expressValidator = require('express-validator')
+////////////PREREQUISITE SETTINGS AND CONFIGURATIONS/////////////////////
 
+//importing node modules
+const express = require('express')
+const path = require('path')
+const bodyparser = require('body-parser')
+const bcrypt = require('bcrypt')
+const mysql = require('mysql')
+const session = require('express-session')
+const sessionstore = require('express-mysql-session')
+const cookie = require('cooki-parser')
+var User = require('./templates/cores/users')
 
 //starting the app
 const app = express()
 
-//body parser setting
-var urlencodedParser = bodyparser.urlencoded({ extended: false });
+//body-parser settings
+ar urlencodedParser = bodyparser.urlencoded({ extended: false })
 
-//validator setting
-app.use(expressValidator());
-
-//static folder
+//static library
 app.use(express.static(__dirname + '/templates/'))
 
-//view engine
+//setting up the view engine
 app.set('views', path.join(__dirname + '/templates/views/'))
 app.set('view engine', 'hbs')
 
+//settings up the sessions
+app.use(cookie())
+app.use(session({
+    secret: 'secret-key',
+    resave: false,
+    store: sessionStore,
+    saveUninitialized: false,
+    cookie: {maxAge: 60 * 1000 * 30}
+}))
 
 //DB connection settings
 var connection = mysql.createConnection({
@@ -42,30 +54,13 @@ var connection = mysql.createConnection({
   });
 
 
-  ///////////////////////////////////////////////////////////////////////////
+////////////////////////PAGE ROUTES/////////////
 
-  //index page
-  app.get('/', (request, response)=>{
-      response.render('index')
-  })
-
-  //register page
-  app.get('/register', (request, response)=>{
-      response.render('register')
-  })
-
-  app.post('/register', urlencodedParser, (request, response)=>{
-      console.log(request.body)
-
-      request.checkBoyd
-
-  })
-  //login page
-  app.get('/login', (request, response)=>{
-      response.render('login')
-  })
-
-  //app is listening
-  app.listen(3000, ()=>{
-      console.log("LISTENING ON PORT 3000")
-  })
+////////////////////////// HOME PAGE ////////
+app.get('/', function(request, response){
+    let user = request.session.user
+    
+    if(user){
+        response.render()
+    }
+})
