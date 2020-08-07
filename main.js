@@ -61,6 +61,48 @@ app.get('/', function(request, response){
     let user = request.session.user
     
     if(user){
-        response.render()
+        response.render('home', {})
     }
+    else{
+        response.render('index')
+    }
+})
+
+
+
+/////////////////////////////////REGISTER PAGE/////////////////////////////////////
+app.get('/register', function(request, response){
+    response.render('register')
+})
+app.post('/register', urlencodedParser, (request, response)=>{
+    console.log(request.body)
+    
+    connection.query("SELECT * FROM geeku where Name = '"+request.body.name+"'", async function(error, results){
+        if(error){throw error}
+        
+        else if(results.length > 0){
+            console.log(results)
+            return response.render('register', {message: "Account on this name already exists"})
+        }
+        else if(results.length < 0){
+            connection.query("SELECT * FROM geeku WHERE Email = '"+request.body.email+"' ", function(error, results){
+                if(error){throw error}
+                
+                else if(results.length > 0){
+                    return response.render('register', {message: 'Account with this email already exists'})
+                }
+                else if(results.length < 0){
+                    if(request.body.password === request.body.re_password){
+                        salt = await bcrypt.genSalt()
+                        password = await bcrypt.hash(request.body.password, salt)
+                        
+                        console.log(request.body)
+                        console.log(password)
+                        
+                        let userInput = {}
+                    }
+                }
+            })
+        }
+    })
 })

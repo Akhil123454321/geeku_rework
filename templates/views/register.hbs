@@ -1,75 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up </title>
-    <link rel="icon" href="static/images/icons/signup.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="static/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <!-- Title Page-->
+    <title>Sign Up</title>
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="static/css/register.css">
+    <!-- Icons font CSS-->
+    <link href="../static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="../static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="../static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../static/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="../static/css/register.css" rel="stylesheet" media="all">
+    <link rel="icon" href="../static/images/icons/signup.png">
 </head>
+
 <body>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Create An Account</h2>
+                    <form method="POST">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Username</label>
+                                    <input class="input--style-4" type="text" name="username">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="text" name="email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">School</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4" type="text" name="school">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Account Type</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Student
+                                            <input type="radio" checked="checked" name="type">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Teacher
+                                            <input type="radio" name="type">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Phone Number</label>
+                                    <input class="input--style-4" type="text" name="phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="board">
+                                    <option disabled="disabled" selected="selected">Choose Board</option>
+                                    <option value="IB MYP">IB MYP</option>
+                                    <option value="IB DP">IB DP</option>
+                                    <option value="IGCSE">IGCSE</option>
+                                    <option value="ICSEP">ICSE</option>
+                                    <option value="CBSE">CBSE</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="grade">
+                                    <option disabled="disabled" selected="selected">Choose Grade</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
 
-    <div class="main">
+                        <script>
+                            function showCheckboxes() {
+                                var checkboxes = document.getElementById("checkboxes");
 
-        <section class="signup">
-            <!-- <img src="images/signup-bg.jpg" alt=""> -->
-            <div class="container">
-                <div class="signup-content">
-                    <form method="POST" action="/register" id="signup-form" class="signup-form">
-                        <h2 class="form-title">Create account</h2>
-                        <div class="form-group">
-                            {{#if message}}
-                                <h4 style="text-align: center; background-color: #ff726f; border-radius: 5px;">{{ message }} </h4>
-                            {{/if}}
+                                if (show){
+                                    checkboxes.style.display = "block";
+                                    show = false
+                                }
+                                else{
+                                    checkboxes.style.display = "none";
+                                    show = true; 
+                                }
+                            }
+                        </script>
 
-                            {{#if successful}}
-                                <h4 style="text-align: center; background-color: #90EE90; border-radius: 5px;">{{ successful }} <a href="/login" style="text-decoration: none;">Click Here To Login</a></h4>
-                            {{/if}}
-                            <input type="text" class="form-input" name="name" id="name" placeholder="Your Name" required/>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-input" name="email" id="email" placeholder="Your Email" required/>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-input" name="school" id="school" placeholder="Your School" required/>
-                        </div>
-                        <div class="form-group">
-                            <input  style="text-transform: uppercase;" type="text" class="form-input" name="board" id="board" placeholder="Board you study in [IN CAPS]" required/>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-input" name="grade" id="grade" placeholder="Grade you study in" required/>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-input" name="password" id="password" placeholder="Password" required/>
-                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password" required/>
+                        <div class="input-group">
+                            <label class="label">Subjects</label>
+                            <style>
+                                table {
+                                font-family: arial, sans-serif;
+                                border-collapse: collapse;
+                                width: 100%;
+                                }
+
+                                td, th {
+                                border: 1px solid #dddddd;
+                                text-align: left;
+                                padding: 8px;
+                                }
+
+                                tr:nth-child(even) {
+                                background-color: #dddddd;
+                                }
+                            </style>
+                            <table>
+                                <tr>
+                                    <th>Humanities</th>
+                                    <th>Sciences</th>
+                                    <th>Languages</th>
+                                </tr>
+                                <tr>
+                                    <td>History  <input type="checkbox" name="history" id="checkbox" value="History" placeholder="History"></td>
+                                    <td>Maria Anders</td>
+                                    <td>Germany</td>
+                                </tr>
+                                <tr>
+                                    <td>Centro comercial Moctezuma</td>
+                                    <td>Francisco Chang</td>
+                                    <td>Mexico</td>
+                                </tr>
+                                <tr>
+                                    <td>Ernst Handel</td>
+                                    <td>Roland Mendel</td>
+                                    <td>Austria</td>
+                                </tr>
+                                <tr>
+                                    <td>Island Trading</td>
+                                    <td>Helen Bennett</td>
+                                    <td>UK</td>
+                                </tr>
+                                <tr>
+                                    <td>Laughing Bacchus Winecellars</td>
+                                    <td>Yoshi Tannamuri</td>
+                                    <td>Canada</td>
+                                </tr>
+                                <tr>
+                                    <td>Magazzini Alimentari Riuniti</td>
+                                    <td>Giovanni Rovelli</td>
+                                    <td>Italy</td>
+                                </tr>
+                            </table>
+                            {{!-- <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="subject">
+                                    <option disabled="disabled" selected="selected">Choose Subjects</option>
+                                    <input type="checkbox" value="history">
+                                    <optgroup label="Humanities">
+                                        <input type="checkbox" id="checkboxes" name="history" value="History" onclick="showCheckboxes">
+                                    </optgroup>
+
+                                    <optgroup label="Sciences">
+                                        <option value="Chemistry">Chemistry</option>
+                                        <option value="Biology">Biology</option>
+                                        <option value="Physcs">Physics</option>
+                                    </optgroup>
+                                    <optgroup>Subject</optgroup>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div> --}}
                         </div>
 
-                        <div class="form-group">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
                         </div>
                     </form>
-                    <p class="loginhere">
-                        Already have an account ? <a href="/login" class="loginhere-link">Login here </a>
-                    </p>
                 </div>
             </div>
-        </section>
-
+        </div>
     </div>
 
-    
-    
-    <!-- JS -->
-    <script src="static/vendor/jquery/jquery.min.js"></script>
-    <script src="static/js/register.js"></script>
-</body>
+    <!-- Jquery JS-->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="../static/vendor/select2/select2.min.js"></script>
+    <script src="../static/vendor/datepicker/moment.min.js"></script>
+    <script src="../static/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="../static/js/register.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
 </html>
+<!-- end document-->
