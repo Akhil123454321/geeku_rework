@@ -91,8 +91,8 @@ app.get('/', function(request, response) {
 })
 
 //////////////////////////////////////////////////////////////*REGISTER PAGE*////
-app.get('/register', function(request, response){
-    response.render(__dirname + '/templates/views/register.hbs')
+app.get('/register-step1', function(request, response){
+    response.render('register', {step1: "Step 1"})
 })
 app.post('/register', urlencodedParser, (request,response) => {
     console.log(request.body)

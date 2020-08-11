@@ -1,11 +1,11 @@
-- prevent people from foul language for usernames and all \/ 
+- prevent people from foul language for usernames and all  
 
 main app -->
-    - proper validation and auth \/
-    - session stores/cookie-parser \/
+    - proper validation and auth 
+    - session stores/cookie-parser 
     - area wise segregation of schools 
     - subscription service -- so people can buy stuff
-    - recovery password email  \/
+    - recovery password email  
     - ad blocker --> v r using extensions
     
 forums -->

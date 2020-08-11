@@ -8,14 +8,21 @@ const bcrypt = require('bcrypt')
 const mysql = require('mysql')
 const session = require('express-session')
 const sessionstore = require('express-mysql-session')
-const cookie = require('cooki-parser')
-var User = require('./templates/cores/users')
+const cookie = require('cookie-parser')
+const validator = require('express-validator')
+//var User = require('./templates/cores/users')
 
 //starting the app
 const app = express()
 
 //body-parser settings
-ar urlencodedParser = bodyparser.urlencoded({ extended: false })
+var urlencodedParser = bodyparser.urlencoded({ extended: false })
+
+//express validator 
+const validatorOptions = {
+    
+}
+//app.use(validator(validatorOptions))
 
 //static library
 app.use(express.static(__dirname + '/templates/'))
@@ -29,7 +36,7 @@ app.use(cookie())
 app.use(session({
     secret: 'secret-key',
     resave: false,
-    store: sessionStore,
+    //store: sessionStore,
     saveUninitialized: false,
     cookie: {maxAge: 60 * 1000 * 30}
 }))
@@ -70,39 +77,43 @@ app.get('/', function(request, response){
 
 
 
-/////////////////////////////////REGISTER PAGE/////////////////////////////////////
-app.get('/register', function(request, response){
-    response.render('register')
+//////////////////////////////////////////////////////////REGISTER PAGE
+//step1 settings start //
+app.get('/register-step1', (request, response)=>{
+    response.render('register', {step1: "Step 1"})
 })
-app.post('/register', urlencodedParser, (request, response)=>{
+app.post('/register-step1', urlencodedParser, function(request, response){
     console.log(request.body)
+    if(request.body.student == "on"){
+        var type = "student"
+        console.log(type)
+    }
+    else if(request.body.teacher == "on"){
+        var type = "teacher"
+        console.log(type)
+    }
+    userInput = {
+        fname:  request.body.fname,
+        lname:  request.body.lname,
+        email:   request.body.email, 
+        type: type
+    }
     
-    connection.query("SELECT * FROM geeku where Name = '"+request.body.name+"'", async function(error, results){
-        if(error){throw error}
-        
-        else if(results.length > 0){
-            console.log(results)
-            return response.render('register', {message: "Account on this name already exists"})
-        }
-        else if(results.length < 0){
-            connection.query("SELECT * FROM geeku WHERE Email = '"+request.body.email+"' ", function(error, results){
-                if(error){throw error}
-                
-                else if(results.length > 0){
-                    return response.render('register', {message: 'Account with this email already exists'})
-                }
-                else if(results.length < 0){
-                    if(request.body.password === request.body.re_password){
-                        salt = await bcrypt.genSalt()
-                        password = await bcrypt.hash(request.body.password, salt)
-                        
-                        console.log(request.body)
-                        console.log(password)
-                        
-                        let userInput = {}
-                    }
-                }
-            })
-        }
-    })
+    response.redirect('/register-step2')
+})
+//step1 settings end//
+
+//step2 settings start//
+app.get('/register-step2', (request, response)=>{
+    response.render('register', {step2: "Step 2"})
+})
+app.post('/register-step2', urlencodedParser, function(request, response){
+    console.log(request.body)
+})
+
+
+//app listening
+const PORT = process.env.PORT || 3000
+app.listen(PORT, ()=>{
+    console.log("App is listening on port '"+PORT+"'")
 })
