@@ -103,7 +103,7 @@ app.post('/register-step1', urlencodedParser, function(request, response){
 })
 //step1 settings end//
 
-//step2 settings start//
+//step2 settings start//o
 app.get('/register-step2', (request, response)=>{
     response.render('register', {step2: "Step 2"})
 })
